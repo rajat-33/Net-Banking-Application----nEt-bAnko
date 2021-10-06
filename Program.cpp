@@ -258,9 +258,9 @@ void topPart()
     date = s.first;
     time = s.second;
     time += " (+5:30 UTC)";
-    cout << "\t"   << date <<"\t\t\t\t\t\t";
-    cout << "nEt bAnko\t\t\t\t\t";
-    cout << time << "\n\n\n\n";
+    cout << "\t<"   << date <<">\t\t\t\t\t";
+    cout << "--- nEt bAnko --- \t\t\t\t<";
+    cout << time << ">\n\n\n\n";
 }
 
 void bottomPart()
