@@ -6,6 +6,7 @@
 #include <unordered_set>
 #include <vector> //for vectors
 #include <fstream>
+#include<ctime> //for time
 using namespace std;
 
 vector<bool> refUserIDs(1000, 0); //for unique user IDs
@@ -218,6 +219,32 @@ bool User ::signIn(string inp_username)
     return 1;
 }
 
+pair<string, string> getDateAndTime(void)
+{
+    time_t tt;
+
+	// Declaring variable to store return value of
+	// localtime()
+	struct tm * ti;
+
+	// Applying time()
+	time (&tt);
+
+	// Using localtime()
+	ti = localtime(&tt);
+	string s = asctime(ti);
+	string date, time;
+	for(int i = 0;i<10;i++)
+	{
+		date.push_back(s[i]);
+	}
+	for(int i = 11;i<19;i++)
+	{
+		time.push_back(s[i]);
+	}
+	return {date, time};
+}
+
 void topPart()
 {
     cout << "\n\n\n\n\n";
@@ -226,9 +253,14 @@ void topPart()
         cout << "= ";
     }
     cout << "\n";
-    cout << "\t   DATE\t\t\t\t\t\t\t";
-    cout << "nEt bAnko\t\t\t\t\t\t";
-    cout << "  TIME\n\n\n\n";
+    string date, time;
+    pair<string, string> s = getDateAndTime();
+    date = s.first;
+    time = s.second;
+    time += " (+5:30 UTC)";
+    cout << "\t"   << date <<"\t\t\t\t\t\t";
+    cout << "nEt bAnko\t\t\t\t\t";
+    cout << time << "\n\n\n\n";
 }
 
 void bottomPart()

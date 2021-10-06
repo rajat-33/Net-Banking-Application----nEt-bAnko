@@ -17,9 +17,18 @@ int main()
 
 	// Using localtime()
 	ti = localtime(&tt);
-
+	string s = asctime(ti);
+	string date, time;
+	for(int i = 0;i<10;i++)
+	{
+		date.push_back(s[i]);
+	}
+	for(int i = 11;i<19;i++)
+	{
+		time.push_back(s[i]);
+	}
 	cout << "Current Day, Date and Time is = "
-		<< asctime(ti);
+		<< date << " " << time;
 
 return 0;
 }
